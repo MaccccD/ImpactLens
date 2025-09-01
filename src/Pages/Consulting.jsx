@@ -6,14 +6,14 @@ function Consulting() {
   
   
     function Navigate(){
-      nav("/Compliance");
+      nav("/Recommendation");
     }
   return (
     <div>
-      <h1>Consluting Page</h1>
+      <h1>Consulting Page</h1>
       Welcome to the AI chat bot consult page ( should be more genarlized for prvidding assitance with the app or system ! meant)
 
-      <br/>
+      <br/><br/>
       <button onClick={Navigate}>Recommendations</button>
     </div>
   )
