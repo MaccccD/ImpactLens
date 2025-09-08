@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
 function Home() {
 
   const nav = useNavigate();
+  const [healthCheck, setHealthCheck] = useState();
 
 
   function Navigate(){
     nav("/Compliance");
+    console.log("working");
   }
   return (
     <div>
