@@ -11,8 +11,8 @@ function Recommendation() {
     <div>
       <h1>Recommendations Page</h1>
       Welcome to the Recommendations page!
-      <br/><br/>
-      <button onClick={Navigate}>Home</button>
+      {/* <br/><br/>
+      <button onClick={Navigate}>Home</button> */}
     </div>
   )
 }

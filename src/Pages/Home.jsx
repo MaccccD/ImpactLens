@@ -18,8 +18,7 @@ function Home() {
   
      <p>A student-led, AI-assisted consulting service that helps Johannesburg SMEs 
         adopt practical, low-cost Environmental, Social and Governance (ESG) practices. 
-      <br/><br/>
-      <button onClick={Navigate}>Compliance Check</button>
+      {/* <button onClick={Navigate}>Compliance Check</button> */}
      </p>
     </div>
   )

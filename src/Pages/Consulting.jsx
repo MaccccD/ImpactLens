@@ -11,10 +11,8 @@ function Consulting() {
   return (
     <div>
       <h1>Consulting Page</h1>
-      Welcome to the AI chat bot consult page ( should be more genaralized for providing assitance with the app or system !!!z)
-
-      <br/><br/>
-      <button onClick={Navigate}>Recommendations</button>
+      Welcome to the AI chat bot consult page ( should be more genaralized for providing assitance with the app or system !!!!)
+      {/* <button onClick={Navigate}>Recommendations</button> */}
     </div>
   )
 }
