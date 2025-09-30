@@ -42,10 +42,15 @@
 }
 nav {
   display: flex;
+  
   gap: 70px;
   margin: 40px;
   justify-content: center;
-  margin-top: -190px;
+  margin-top: -300px;
   margin-bottom: 200px;
 
+}
+.heading {
+
+  margin-top: -3px;
 }

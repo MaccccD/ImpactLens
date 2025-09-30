@@ -5,10 +5,10 @@ function Navbar() {
 
   return (
     <nav>
-        <Link to={"/"} style={{display: 'flex', color: "white", fontSize: 14, gap: 50, cursor: 'pointer'}}>Home</Link>
-        <Link to={"/Compliance"} style={{display: "flex", color: "white", fontSize: 14, gap: 50, cursor:'pointer'}}>ESG Compliance</Link>
-        <Link to={"/Consulting"} style={{display: "flex", color: "white", fontSize: 14, gap: 50, cursor: "pointer"}}>Consulting</Link>
-        <Link to={"/Recommendations"} style={{display: "flex", color: "white", fontSize: 14, cursor: "pointer"}}>Recommendations</Link>
+        <Link to={"/"} style={{display: 'flex', color: "white", fontSize: 30, gap: 50, cursor: 'pointer'}}>Home</Link>
+        <Link to={"/Compliance"} style={{display: "flex", color: "white", fontSize: 30, gap: 50, cursor:'pointer'}}>ESG Compliance</Link>
+        <Link to={"/Consulting"} style={{display: "flex", color: "white", fontSize: 30, gap: 50, cursor: "pointer"}}>Consulting</Link>
+        <Link to={"/Recommendations"} style={{display: "flex", color: "white", fontSize: 30, cursor: "pointer"}}>Recommendations</Link>
     </nav>
   )
 }

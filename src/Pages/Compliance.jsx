@@ -10,10 +10,8 @@ function Compliance() {
     }
   return (
     <div>
-      <h1>ESG Compliance  Check!</h1>
-        Welcome to the doccies upload page !
-     
-     {/* <button onClick={Navigate}>Consulting Page</button> */}
+      <h1 className='heading'>ESG Compliance  Check</h1>
+       
     </div>
   )
 }
