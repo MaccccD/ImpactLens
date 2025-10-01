@@ -20,7 +20,7 @@ function Compliance() {
 
       const handleSave =() =>{
         if(!electricityTrack || !energyEfficiency || !waterUsage || !recycling || !waterLandfill || !renewableEnergy || !carbonFootprint === null){
-          alert("Please fill out the required fields before saving!!");
+          alert("Please fill out the required fields before saving!");
           return;
         }
       
