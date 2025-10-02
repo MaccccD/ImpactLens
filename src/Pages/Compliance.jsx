@@ -8,7 +8,7 @@ function Compliance() {
       nav("/Consulting");
     }
       
-      //state variables for the Environmental Sevtion of the ESG Helath check.""
+      //state variables for the Environmental Section of the ESG Health check.""
       const [electricityTrack, setElectricityTrack] = useState("");
       const [energyEfficiency, setEnergyEfficiency] = useState("");
       const [waterUsage, setWaterUsage] = useState("");
@@ -17,8 +17,51 @@ function Compliance() {
       const [renewableEnergy, setRenewableEnergy] = useState("");
       const [carbonFootprint, setCarbonFootprint] = useState("");
 
+      //state variables for the Social section of the ESG Health Check :
+      const [writtenPolicy, setWrittenPolicy] = useState("");
+      const [employeeFeedback, setEmployeeFeeback] = useState("");
+      const [localComProject, SetLocalComProject] = useState("");
+      const [skillsDevelopment, setSkillsDevelopment] = useState("");
+      const [suppliers, SetSuppliers] = useState("");
+      const [healthConditions, setHealthConditions] = useState("");
+      const [labourPractices, setLabourPractice] = useState("");
 
-      const handleSave =() =>{
+
+    const SaveSocial =()=>{
+      if(!writtenPolicy || !employeeFeedback || !localComProject || !skillsDevelopment || !suppliers || !healthConditions || !labourPractices === null){
+        alert("Please ensure that you answer all the questions before saving!");
+        return;
+      }
+
+      const socialLogs = {
+        writtenPolicy,
+        employeeFeedback,
+        localComProject,
+        skillsDevelopment,
+        suppliers,
+        healthConditions,
+        labourPractices
+      }
+
+      const existingLogs = JSON.parse(localStorage.getItem("SocialLogs")) || [];
+      const updatedSocialLogs = [...existingLogs,socialLogs];
+      localStorage.setItem("SocialLogs",JSON.stringify(updatedSocialLogs));
+
+      //after the above has been saved, clear the fields:
+      setWrittenPolicy("");
+      setEmployeeFeeback("");
+      SetLocalComProject("");
+      SetSuppliers("");
+      setHealthConditions("");
+      setLabourPractice("");
+    }
+
+
+
+
+
+
+      const SaveEnvironmental =() =>{
         if(!electricityTrack || !energyEfficiency || !waterUsage || !recycling || !waterLandfill || !renewableEnergy || !carbonFootprint === null){
           alert("Please fill out the required fields before saving!");
           return;
@@ -35,6 +78,11 @@ function Compliance() {
         carbonFootprint,
         date: new Date().toLocaleDateString('en-GB'),
         };
+
+
+        const SaveSocial = () =>{
+
+        }
 
     // saving the environmental logs in local sotrage:
     const existingLogs = JSON.parse(localStorage.getItem("EnvironmentalLogs")) || [];
@@ -53,6 +101,8 @@ function Compliance() {
     alert("Environmental Questions answered successfully!");
     
     }
+
+    
 
    return ( 
     <div>
@@ -112,7 +162,7 @@ function Compliance() {
         <option value= "Interested but don't know how">Interested but don't know how to</option>
        </select>
        <br/>
-        <button onClick={handleSave} className='nextBtn'>Save Entry</button><br/><br/>
+        <button onClick={SaveEnvironmental} className='nextBtn'>Save Entry</button><br/><br/>
     </div>
   )
 }
