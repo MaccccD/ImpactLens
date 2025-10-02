@@ -17,6 +17,8 @@ function Compliance() {
       const [renewableEnergy, setRenewableEnergy] = useState("");
       const [carbonFootprint, setCarbonFootprint] = useState("");
 
+      const [ShowSocial, setShowSocial] = useState(false);
+
       //state variables for the Social section of the ESG Health Check :
       const [writtenPolicy, setWrittenPolicy] = useState("");
       const [employeeFeedback, setEmployeeFeeback] = useState("");
@@ -40,7 +42,8 @@ function Compliance() {
         skillsDevelopment,
         suppliers,
         healthConditions,
-        labourPractices
+        labourPractices,
+        date: new Date().toLocaleDateString("en-GB")
       }
 
       const existingLogs = JSON.parse(localStorage.getItem("SocialLogs")) || [];
@@ -54,6 +57,8 @@ function Compliance() {
       SetSuppliers("");
       setHealthConditions("");
       setLabourPractice("");
+
+      console.log("the social logs would be showing now that this has happened");
     }
 
 
@@ -62,7 +67,7 @@ function Compliance() {
 
 
       const SaveEnvironmental =() =>{
-        if(!electricityTrack || !energyEfficiency || !waterUsage || !recycling || !waterLandfill || !renewableEnergy || !carbonFootprint === null){
+        if(!electricityTrack || !energyEfficiency || !waterUsage || !recycling || !wasteLandfill || !renewableEnergy || !carbonFootprint === null){
           alert("Please fill out the required fields before saving!");
           return;
         }
@@ -80,11 +85,9 @@ function Compliance() {
         };
 
 
-        const SaveSocial = () =>{
+    
 
-        }
-
-    // saving the environmental logs in local sotrage:
+    // saving the environmental logs in the local sotrage:
     const existingLogs = JSON.parse(localStorage.getItem("EnvironmentalLogs")) || [];
     const updatedLogs = [...existingLogs, environmentalLog];
     localStorage.setItem("EnvironmentalLogs", JSON.stringify(updatedLogs));
@@ -98,10 +101,19 @@ function Compliance() {
     setRenewableEnergy("");
     setCarbonFootprint("");
 
-    alert("Environmental Questions answered successfully!");
-    
-    }
+    alert("Environmental Questions answered successfully!")
 
+
+    if(ShowSocial === true){
+     alert("The social questions show now be showing");
+     SaveSocial();
+    }
+    else{
+      alert("Nope!!");
+    }
+    
+  
+    }
     
 
    return ( 
@@ -164,6 +176,9 @@ function Compliance() {
        <br/>
         <button onClick={SaveEnvironmental} className='nextBtn'>Save Entry</button><br/><br/>
     </div>
-  )
-}
+
+
+  );
+};
+
 export default Compliance;
