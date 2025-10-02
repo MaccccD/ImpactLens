@@ -17,7 +17,8 @@ function Compliance() {
       const [renewableEnergy, setRenewableEnergy] = useState("");
       const [carbonFootprint, setCarbonFootprint] = useState("");
 
-      const [ShowSocial, setShowSocial] = useState(false);
+      const [ShowSocial, setShowSocial] = useState(true);
+      const [HideEnvironmental, setHideEnvironmental] = useState(true);
 
       //state variables for the Social section of the ESG Health Check :
       const [writtenPolicy, setWrittenPolicy] = useState("");
@@ -28,8 +29,52 @@ function Compliance() {
       const [healthConditions, setHealthConditions] = useState("");
       const [labourPractices, setLabourPractice] = useState("");
 
+      
 
-    const SaveSocial =()=>{
+      const SaveEnvironmental =() =>{
+        if(!electricityTrack || !energyEfficiency || !waterUsage || !recycling || !wasteLandfill || !renewableEnergy || !carbonFootprint === null){
+          alert("Please fill out the required fields before saving!");
+          HideEnvironmental(false);
+          ShowSocial(true);
+          return;
+        }
+      
+
+        const environmentalLog = {
+        electricityTrack,
+        energyEfficiency,
+        waterUsage,
+        recycling,
+        wasteLandfill,
+        renewableEnergy,
+        carbonFootprint,
+        date: new Date().toLocaleDateString('en-GB'),
+        };
+
+    // saving the environmental logs in the local sotrage:
+    const existingLogs = JSON.parse(localStorage.getItem("EnvironmentalLogs")) || [];
+    const updatedLogs = [...existingLogs, environmentalLog];
+    localStorage.setItem("EnvironmentalLogs", JSON.stringify(updatedLogs));
+
+    //clear out all the fileds after saving :
+    setElectricityTrack("");
+    setEnergyEfficiency("");
+    setWaterUsage("");
+    setRecycling("");
+    setWasteLandfill("");
+    setRenewableEnergy("");
+    setCarbonFootprint("");
+
+    alert("Environmental Questions answered successfully!")
+
+    setShowSocial(false); // show the social questions 
+    setHideEnvironmental(false); // hide the environmental questions
+
+    //calling the toggle after saving for the environmental
+    ToggleDisplay();
+    }
+
+       const SaveSocial =()=>{
       if(!writtenPolicy || !employeeFeedback || !localComProject || !skillsDevelopment || !suppliers || !healthConditions || !labourPractices === null){
         alert("Please ensure that you answer all the questions before saving!");
         return;
@@ -49,6 +94,7 @@ function Compliance() {
       const existingLogs = JSON.parse(localStorage.getItem("SocialLogs")) || [];
       const updatedSocialLogs = [...existingLogs,socialLogs];
       localStorage.setItem("SocialLogs",JSON.stringify(updatedSocialLogs));
+       console.log("the social logs would be showing now that this has happened");
 
       //after the above has been saved, clear the fields:
       setWrittenPolicy("");
@@ -62,60 +108,20 @@ function Compliance() {
     }
 
 
-
-
-
-
-      const SaveEnvironmental =() =>{
-        if(!electricityTrack || !energyEfficiency || !waterUsage || !recycling || !wasteLandfill || !renewableEnergy || !carbonFootprint === null){
-          alert("Please fill out the required fields before saving!");
-          return;
-        }
-      
-
-        const environmentalLog = {
-        electricityTrack,
-        energyEfficiency,
-        waterUsage,
-        recycling,
-        wasteLandfill,
-        renewableEnergy,
-        carbonFootprint,
-        date: new Date().toLocaleDateString('en-GB'),
-        };
-
-
-    
-
-    // saving the environmental logs in the local sotrage:
-    const existingLogs = JSON.parse(localStorage.getItem("EnvironmentalLogs")) || [];
-    const updatedLogs = [...existingLogs, environmentalLog];
-    localStorage.setItem("EnvironmentalLogs", JSON.stringify(updatedLogs));
-
-    //clear out all the fileds after saving :
-    setElectricityTrack("");
-    setEnergyEfficiency("");
-    setWaterUsage("");
-    setRecycling("");
-    setWasteLandfill("");
-    setRenewableEnergy("");
-    setCarbonFootprint("");
-
-    alert("Environmental Questions answered successfully!")
-
-
-    if(ShowSocial === true){
+    //so here i'm trying to create a conditional rendering that will SHOW the social aspect of the questions but HIDE the environmental aspect of the questions:
+    const ToggleDisplay = () =>{
+     if(ShowSocial === true && HideEnvironmental === true){
      alert("The social questions show now be showing");
-     SaveSocial();
-    }
-    else{
+     console.log("yay,, this is working!!");
+     }
+     else{
       alert("Nope!!");
+     // return;
+     }
     }
-    
-  
-    }
-    
+     
 
+    
    return ( 
     <div>
       <p className='content'>1. Does your business track monthly electricity consumption?</p>
@@ -175,6 +181,18 @@ function Compliance() {
        </select>
        <br/>
         <button onClick={SaveEnvironmental} className='nextBtn'>Save Entry</button><br/><br/>
+        {/**The Social aspect Questions of the ESG Health Check: */}
+        <div>
+        <p className='content'>1. Do you have a written policy promoting diversity and equal opportunity?</p>
+        <select className='setUp' onChange={(w)=> setWrittenPolicy(w.target.value)} value={writtenPolicy}>
+        <option value="">Select answer below:</option>
+        <option value= "Yes">Yes</option>
+        <option value= "No">No</option>
+        <option value= "In-Development">In-Development</option>
+       </select>
+       <br/>
+
+        </div>
     </div>
 
 
