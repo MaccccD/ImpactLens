@@ -27,7 +27,7 @@ function Compliance() {
       const [skillsDevelopment, setSkillsDevelopment] = useState("");
       const [suppliers, SetSuppliers] = useState("");
       const [healthConditions, setHealthConditions] = useState("");
-      const [labourPractices, setLabourPractice] = useState("");
+      const [labourPractices, setLabourPractices] = useState("");
 
       
 
@@ -102,7 +102,7 @@ function Compliance() {
       SetLocalComProject("");
       SetSuppliers("");
       setHealthConditions("");
-      setLabourPractice("");
+      setLabourPractices("");
 
       console.log("the social logs would be showing now that this has happened");
     }
@@ -124,6 +124,7 @@ function Compliance() {
     
    return ( 
     <div>
+      <h1 className='heading'>Environmental Check:</h1>
       <p className='content'>1. Does your business track monthly electricity consumption?</p>
         <select className='setUp' onChange={(b)=> setElectricityTrack(b.target.value)} value={electricityTrack}>
         <option value="">Select answer below:</option>
@@ -183,6 +184,7 @@ function Compliance() {
         <button onClick={SaveEnvironmental} className='nextBtn'>Save Entry</button><br/><br/>
         {/**The Social aspect Questions of the ESG Health Check: */}
         <div>
+          <h1 className='heading'>Social Check:</h1>
         <p className='content'>1. Do you have a written policy promoting diversity and equal opportunity?</p>
         <select className='setUp' onChange={(w)=> setWrittenPolicy(w.target.value)} value={writtenPolicy}>
         <option value="">Select answer below:</option>
@@ -191,11 +193,58 @@ function Compliance() {
         <option value= "In-Development">In-Development</option>
        </select>
        <br/>
-
+        <p className='content'>2. Is there a system for employee feedback or grievance reporting?</p>
+        <select className='setUp' onChange={(e)=> setEmployeeFeeback(e.target.value)} value={employeeFeedback}>
+        <option value="">Select answer below:</option>
+        <option value= "Yes">Yes</option>
+        <option value= "No">No</option>
+        <option value= "Informal Only">Informal</option>
+       </select>
+       <br/>
+        <p className='content'>3. Does your business support local community projects or charities?</p>
+        <select className='setUp' onChange={(l)=> SetLocalComProject(l.target.value)} value={localComProject}>
+        <option value="">Select answer below:</option>
+        <option value= "Yes">Yes</option>
+        <option value= "No">No</option>
+        <option value= "Occasionally">Occasionally</option>
+       </select>
+       <br/>
+        <p className='content'>4. Do you offer skills development or training opportunities for employees?</p>
+        <select className='setUp' onChange={(s)=> setSkillsDevelopment(s.target.value)} value={skillsDevelopment}>
+        <option value="">Select answer below:</option>
+        <option value= "Yes">Yes</option>
+        <option value= "No">No</option>
+        <option value= "Sometimes">Sometimes</option>
+       </select>
+       <br/>
+        <p className='content'>5. Are the majority of your suppliers local or from previously disadvantaged groups?</p>
+        <select className='setUp' onChange={(s)=> SetSuppliers(s.target.value)} value={suppliers}>
+        <option value="">Select answer below:</option>
+        <option value= "Yes">Yes</option>
+        <option value= "No">No</option>
+        <option value= "Some-Are">Some-Are</option>
+       </select>
+       <br/>
+        <p className='content'>6. Do you ensure safe and healthy working conditions for all staff?</p>
+        <select className='setUp' onChange={(h)=> setHealthConditions(h.target.value)} value={healthConditions}>
+        <option value="">Select answer below:</option>
+        <option value= "Yes">Yes</option>
+        <option value= "No">No</option>
+        <option value= "Partially">Partially</option>
+       </select>
+       <br/>
+        <p className='content'>7. Does your business have a stated commitment to fair labour practices?</p>
+        <select className='setUp' onChange={(l)=> setLabourPractices(l.target.value)} value={labourPractices}>
+        <option value="">Select answer below:</option>
+        <option value= "Yes">Yes</option>
+        <option value= "No">No</option>
+        <option value= "Not-Formalized">Not-Formalized</option>
+       </select>
+       <br/>
+       <br/>
+        <button onClick={SaveSocial} className='nextBtn'>Save Entry</button><br/><br/>
         </div>
     </div>
-
-
   );
 };
 
