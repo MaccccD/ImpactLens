@@ -50,7 +50,7 @@ function Compliance() {
     setRenewableEnergy("");
     setCarbonFootprint("");
 
-    alert("Environmental Questions asnwered successfully!");
+    alert("Environmental Questions answered successfully!");
     
     }
 
