@@ -29,6 +29,39 @@ function Compliance() {
       const [healthConditions, setHealthConditions] = useState("");
       const [labourPractices, setLabourPractices] = useState("");
 
+      // state variables for the Governance section of the ESG Health Check:
+      const [codeofEthics, setCodeofEthics] = useState("");
+      const [financialRecords, setFinancialRecods] = useState("");
+      const [dataProtection, setDataProtection] = useState("");
+      const[leadershipStructure, setLeadershipStructure] = useState("");
+      const[riskAsssessment, setRiskAssessment] = useState("");
+      const [definedSustainability, setDefinedSustainability] = useState("");
+
+      //scoring logic variables:
+      const [scoring, setScoring] = useState(0);
+      
+      const MaximumScores = {
+        Yes : 2,
+        AlreadyUsing : 2,
+        Fully: 2
+      }
+
+      const MinimumScores = {
+        Sometimes: 1,
+        Partially: 1,
+        PlanningTo: 1,
+        InProgress: 1
+      }
+
+      const lowScore = 
+      {
+        No: 0,
+        NotSure: 0,
+        NotYet: 0
+      }
+      
+
+
       
 
       const SaveEnvironmental =() =>{
@@ -105,6 +138,13 @@ function Compliance() {
       setLabourPractices("");
 
       console.log("the social logs would be showing now that this has happened");
+    }
+
+    const SaveGovernance = ()=> {
+      if(!codeofEthics || !financialRecords || !dataProtection || !leadershipStructure ||!riskAsssessment || !definedSustainability === null){
+        alert("Please ensure that you answer the fields before saving!!");
+        return;
+      }
     }
 
 
