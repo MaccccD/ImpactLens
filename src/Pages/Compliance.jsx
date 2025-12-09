@@ -20,6 +20,7 @@ function Compliance() {
       const [ShowSocial, setShowSocial] = useState(true);
       const [HideEnvironmental, setHideEnvironmental] = useState(true);
 
+
       //state variables for the Social section of the ESG Health Check :
       const [writtenPolicy, setWrittenPolicy] = useState("");
       const [employeeFeedback, setEmployeeFeeback] = useState("");
@@ -40,6 +41,7 @@ function Compliance() {
       //scoring logic variables:
       const [scoring, setScoring] = useState(0);
       
+
       const MaximumScores = {
         Yes : 2,
         AlreadyUsing : 2,
@@ -60,6 +62,21 @@ function Compliance() {
         NotYet: 0
       }
       
+      function ScoreLogic(){
+      if(value === MaximumScores.Yes || MaximumScores.AlreadyUsing || MaximumScores.Fully){
+          scoring +2;
+      }
+
+      if(value === MinimumScores.InProgress || MinimumScores.Partially || MinimumScores.PlanningTo || MinimumScores.Sometimes){
+        scoring +1;
+      }
+
+      if(value ===lowScore.No || lowScore.NotSure || lowScore.NotYet){
+        scoring +0;
+      }
+
+      alert("This is working and points have been assigned !");
+      };
 
 
       
@@ -100,11 +117,14 @@ function Compliance() {
 
     alert("Environmental Questions answered successfully!")
 
-    setShowSocial(false); // show the social questions 
-    setHideEnvironmental(false); // hide the environmental questions
+    //testing Scoring here :
+    ScoreLogic();
 
-    //calling the toggle after saving for the environmental
-    ToggleDisplay();
+    // setShowSocial(false); // show the social questions 
+    // setHideEnvironmental(false); // hide the environmental questions
+
+    // //calling the toggle after saving for the environmental
+    // ToggleDisplay();
     }
 
        const SaveSocial =()=>{
@@ -137,6 +157,10 @@ function Compliance() {
       setHealthConditions("");
       setLabourPractices("");
 
+      alert("Social Questions answered successfully!")
+
+      //testin scoring here!
+      ScoreLogic();
       console.log("the social logs would be showing now that this has happened");
     }
 
@@ -167,7 +191,8 @@ function Compliance() {
     setLeadershipStructure("");
     setRiskAssessment("");
     setDefinedSustainability("");
-
+    
+    alert("Governmental Questions answered successfully!")
 
     console.log("the governance logs are working if this is showing!");
   };
