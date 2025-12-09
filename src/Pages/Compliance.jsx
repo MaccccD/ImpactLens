@@ -31,7 +31,7 @@ function Compliance() {
 
       // state variables for the Governance section of the ESG Health Check:
       const [codeofEthics, setCodeofEthics] = useState("");
-      const [financialRecords, setFinancialRecods] = useState("");
+      const [financialRecords, setFinancialRecords] = useState("");
       const [dataProtection, setDataProtection] = useState("");
       const[leadershipStructure, setLeadershipStructure] = useState("");
       const[riskAsssessment, setRiskAssessment] = useState("");
@@ -162,7 +162,7 @@ function Compliance() {
     localStorage.setItem("GovernanceLogs",JSON.stringify(updatedGovernanceLogs));
 
     setCodeofEthics("");
-    setFinancialRecods("");
+    setFinancialRecords("");
     setDataProtection("");
     setLeadershipStructure("");
     setRiskAssessment("");
@@ -316,11 +316,51 @@ function Compliance() {
           <h1 className='heading'>Governance Health Check:</h1>
           <br/>
         <p className='content'>1. Do you have a clear code of ethics or anti-corruption policy ?</p>
-        <select className='setUp' onChange={(w)=> setWrittenPolicy(w.target.value)} value={writtenPolicy}>
+        <select className='setUp' onChange={(w)=> setCodeofEthics(c.target.value)} value={codeofEthics}>
         <option value="">Select answer below:</option>
         <option value= "Yes">Yes</option>
         <option value= "No">No</option>
-        <option value= "In-Development">In-Development</option>
+        <option value= "In-Progress">In-Progress</option>
+       </select>
+       <br/>
+        <p className='content'>2. Are your financial records independently reviewed or audited? </p>
+        <select className='setUp' onChange={(w)=> setFinancialRecords(f.target.value)} value={financialRecords}>
+        <option value="">Select answer below:</option>
+        <option value= "Yes">Yes</option>
+        <option value= "No">No</option>
+        <option value= "Not Yet">Not Yet</option>
+       </select>
+       <br/>
+        <p className='content'>3. Do you have a cybersecurity or data protection policy in place ?</p>
+        <select className='setUp' onChange={(w)=> setDataProtection(d.target.value)} value={dataProtection}>
+        <option value="">Select answer below:</option>
+        <option value= "Yes">Yes</option>
+        <option value= "No">No</option>
+        <option value= "Basic Measures Only">Basic Measures Only</option>
+       </select>
+       <br/>
+        <p className='content'>4. Is there a clear leadership structure and delegation of responsibilites?</p>
+        <select className='setUp' onChange={(w)=> setLeadershipStructure(l.target.value)} value={leadershipStructure}>
+        <option value="">Select answer below:</option>
+        <option value= "Yes">Yes</option>
+        <option value= "No">No</option>
+        <option value= "Somewhat">Somewhat</option>
+       </select>
+       <br/>
+        <p className='content'>5. Do you conduct regular risk assessments (operational, financial, ESGs etc)? </p>
+        <select className='setUp' onChange={(w)=> setRiskAssessment(r.target.value)} value={riskAsssessment}>
+        <option value="">Select answer below:</option>
+        <option value= "Yes">Yes</option>
+        <option value= "No">No</option>
+        <option value= "Occasionally">Occasionally</option>
+       </select>
+       <br/>
+        <p className='content'>6. Have you defined sustainability goals or targets fr your business?</p>
+        <select className='setUp' onChange={(w)=> setDefinedSustainability(s.target.value)} value={definedSustainability}>
+        <option value="">Select answer below:</option>
+        <option value= "Yes">Yes</option>
+        <option value= "No">No</option>
+        <option value= "Thinking About It">Thinking About It</option>
        </select>
        <br/>
        
