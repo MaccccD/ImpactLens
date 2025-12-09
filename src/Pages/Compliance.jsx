@@ -142,7 +142,7 @@ function Compliance() {
 
     const SaveGovernance = ()=> {
       if(!codeofEthics || !financialRecords || !dataProtection || !leadershipStructure ||!riskAsssessment || !definedSustainability === null){
-        alert("Please ensure that you answer the fields before saving!!");
+        alert("Please ensure that you answer the fields before saving!");
         return;
       }
     }
@@ -223,6 +223,7 @@ function Compliance() {
        <br/>
         <button onClick={SaveEnvironmental} className='nextBtn'>Save Entry</button><br/><br/>
         {/**The Social aspect Questions of the ESG Health Check: */}
+        <br/>
         <div>
           <h1 className='heading'>Social Check:</h1>
         <p className='content'>1. Do you have a written policy promoting diversity and equal opportunity?</p>

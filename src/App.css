@@ -38,8 +38,9 @@
   padding: 2em;
 }
 .heading {
-  font-size: 18px;
-  margin: 30px;
+  font-size: 30px;
+  margin: 20px;
+  color: #103D81;
   font-weight: bold;
   text-align: left;
 }
