@@ -145,7 +145,7 @@ function Compliance() {
         alert("Please ensure that you answer the fields before saving!");
         return;
       }
-    }
+    
 
     const governanceLogs = {
       codeofEthics,
@@ -164,7 +164,13 @@ function Compliance() {
     setCodeofEthics("");
     setFinancialRecods("");
     setDataProtection("");
-    
+    setLeadershipStructure("");
+    setRiskAssessment("");
+    setDefinedSustainability("");
+
+
+    console.log("the governance logs are working if this is showing!");
+  };
 
     //so here i'm trying to create a conditional rendering that will SHOW the social aspect of the questions but HIDE the environmental aspect of the questions:
     const ToggleDisplay = () =>{
