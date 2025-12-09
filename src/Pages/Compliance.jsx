@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { data, useNavigate } from 'react-router-dom';
 
 function Compliance() {
   const nav = useNavigate();
@@ -147,6 +147,24 @@ function Compliance() {
       }
     }
 
+    const governanceLogs = {
+      codeofEthics,
+      financialRecords,
+      dataProtection,
+      leadershipStructure,
+      riskAsssessment,
+      definedSustainability,
+      date: new Date().toLocaleDateString("en-GB")
+    }
+
+    const existingLogs = JSON.parse(localStorage.getItem("governanceLogs")) || [];
+    const updatedGovernanceLogs = [...existingLogs,governanceLogs];  //savings the governance logs in the exisiting logs storage and storing that as the updated logs 
+    localStorage.setItem("GovernanceLogs",JSON.stringify(updatedGovernanceLogs));
+
+    setCodeofEthics("");
+    setFinancialRecods("");
+    setDataProtection("");
+    
 
     //so here i'm trying to create a conditional rendering that will SHOW the social aspect of the questions but HIDE the environmental aspect of the questions:
     const ToggleDisplay = () =>{
@@ -225,7 +243,8 @@ function Compliance() {
         {/**The Social aspect Questions of the ESG Health Check: */}
         <br/>
         <div>
-          <h1 className='heading'>Social Check:</h1>
+          <h1 className='heading'>Social Health Check:</h1>
+          <br/>
         <p className='content'>1. Do you have a written policy promoting diversity and equal opportunity?</p>
         <select className='setUp' onChange={(w)=> setWrittenPolicy(w.target.value)} value={writtenPolicy}>
         <option value="">Select answer below:</option>
@@ -285,6 +304,20 @@ function Compliance() {
        <br/>
         <button onClick={SaveSocial} className='nextBtn'>Save Entry</button><br/><br/>
         </div>
+
+        <br/>
+         {/**The Governance aspect Questions of the ESG Health Check: */}
+          <h1 className='heading'>Governance Health Check:</h1>
+          <br/>
+        <p className='content'>1. Do you have a clear code of ethics or anti-corruption policy ?</p>
+        <select className='setUp' onChange={(w)=> setWrittenPolicy(w.target.value)} value={writtenPolicy}>
+        <option value="">Select answer below:</option>
+        <option value= "Yes">Yes</option>
+        <option value= "No">No</option>
+        <option value= "In-Development">In-Development</option>
+       </select>
+       <br/>
+       
     </div>
   );
 };
